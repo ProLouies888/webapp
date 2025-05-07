@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+</head>
+<body>
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
+  <p id="message"></p>
+
+  <script>
+    const firebaseConfig = {
+       apiKey: "AIzaSyCVLDlhnQE4qogdVnF3TZdF-VC_mQdK6uE",
+  authDomain: "logindb-543c4.firebaseapp.com",
+  projectId: "logindb-543c4",
+  storageBucket: "logindb-543c4.firebasestorage.app",
+  messagingSenderId: "933105724056",
+  appId: "1:933105724056:web:3137bc5d41313eda8cbeed"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          document.getElementById("message").innerText = "Login successful!";
+          // Redirect or show protected content
+          window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");
+        })
+        .catch(error => {
+          document.getElementById("message").innerText = error.message;
+        });
+    }
+  </script>
+</body>
+</html>
