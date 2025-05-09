@@ -7,19 +7,39 @@
    
     <script>
       function authenticateUser() {
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
-        verifyLogin(email, password);
-           }
+        var inputemail = document.getElementById("email").value;
+        var inputpassword = document.getElementById("password").value;
+       if (verifyLogin(inputemail, inputpassword)) {
+         window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");  
+      } else {
+        document.getElementById("error").innerText = "Invalid Email or Password!";
+      }
+    };
+           
 
   function verifyLogin(email, password) {
   var validUsers = {
     "ywleo88@gmail.com": "jimmy123",
     "user2@gmail.com": "securepass"
   };
+ 
+      return validUsers[email] === password;
+    }
+   
+  </script>
+</body>
+</html>
 
-  if (validUsers[email] && validUsers[email] === password) {
-    window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");  
+
+
+
+
+
+
+
+
+      if (validUsers[email] && validUsers[email] === password) {
+   
     return true;
   } else {
   document.getElementById("error").innerText = "Invalid Email or Password!";
