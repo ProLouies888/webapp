@@ -37,7 +37,7 @@
           window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");
         })
         .catch(error => {
-          document.getElementById("message").innerText = error.message;
+          alert("Login failed: " + error.message);
         });
     }
   </script>
