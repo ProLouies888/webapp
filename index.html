@@ -14,7 +14,10 @@
       } else {
         document.getElementById("error").innerText = "Invalid Email or Password!";
       }
-        this.reset();
+       setTimeout(function () {
+    this.reset();
+    document.getElementById("error").innerText ="";
+  }, 1000);
     };
            
 
