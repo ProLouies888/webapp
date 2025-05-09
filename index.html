@@ -19,8 +19,10 @@
   };
 
   if (validUsers[email] && validUsers[email] === password) {
+    window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");  
     return true;
   } else {
+  document.getElementById("error").innerText = "Invalid Email or Password!";
     return false;
   }
   }
