@@ -1,60 +1,150 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>GitHub Login with Whitelist</title>
   
-  <h2>Login</h2>
-  <input type="email" id="email" placeholder="Email"><br>
-  <input type="password" id="password" placeholder="Password"><br>
-  <button onclick="login()">Login</button>
+  <head>
+    <base target="_top">
+   
+    <script>
+      function authenticateUser() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        verifyLogin(email, password);
+           }
 
-  <script type="module">
-   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-   import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-   import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCVLDlhnQE4qogdVnF3TZdF-VC_mQdK6uE",
-    authDomain: "logindb-543c4.firebaseapp.com",
-    projectId: "logindb-543c4",
-    storageBucket: "logindb-543c4.firebasestorage.app",
-    messagingSenderId: "933105724056",
-    appId: "1:933105724056:web:f0953859f728fd448cbeed"
+  function verifyLogin(email, password) {
+  var validUsers = {
+    "ywleo88@gmail.com": "jimmy123",
+    "user2@gmail.com": "securepass"
   };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-    
-async function login() {
-  try {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const userEmail = userCredential.user.email;
-
-    const q = query(collection(db, "whitelist"), where("email", "==", userEmail));
-    const querySnapshot = await getDocs(q);
-
-    if (!querySnapshot.empty) {
-      console.log("Access granted. You're whitelisted.");
-      // Proceed to your app
-     window.open("https://script.google.com/macros/s/AKfycbys0iuHqZ-9Q6EegoOjOuKLX-yn8cVdELQITztQVf-s8I2wKPTnrCVga1GF60fGJYI/exec?page=18301");
-    } else {
-      console.log("Access denied. Not whitelisted.");
-      await signOut(auth);
-    }
-
-  } catch (error) {
-    console.error("Login failed:", error.message);
+  if (validUsers[email] && validUsers[email] === password) {
+    return true;
+  } else {
+    return false;
   }
   }
+
+
+    </script>
+
+  </head>
+ 
+  <body>
+    <style>
+     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 78vh;
+  padding: 25px;
+  background: #1abc9c;
+  overflow: hidden;
+}
+.wrapper {
+  max-width: 460px;
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.wrapper .title {
+  height: 70px;
+  background: #16a085;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper form {
+  padding: 18px 30px 40px 30px;
+}
+.wrapper form .row {
+  height: 30px;
+  margin-top: 10px;
+  position: relative;
+}
+.wrapper form .row input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 75px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+form .row input:focus {
+  border-color: #16a085;
+}
+form .row input::placeholder {
+  color: #999;
+}
+.wrapper form .row i {
+  position: absolute;
+  width: 55px;
+  height: 100%;
+  color: #fff;
+  font-size: 20px;
+  background: #16a085;
+  border: 1px solid #16a085;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+ background: #16a085;
+ color:white;
+ font-size:18px;
+ margin-left:120px;
+ margin-top:48px;
+ height:42px;
+ width:160px;
+ cursor: pointer; 
+}
+.button:hover {background-color: #1abc9c;}
+
+</style>
+      <div class="wrapper">
+         <div class="title">
+            Login Form
+         </div>
+         <form action="#">
+            <div class="row">
+               <label>Email Address</label>
+               <input type="text" id="email" required>
+              
+            </div>
+            <div class="row" style="margin-top:30px;">
+             
+               <label>Password</label>
+                 <input type="password" id="password" required>
+               
+           
+            </div>
+            
+            <div>
+                
+            <button class="button"  onclick="authenticateUser()">Login</button>
+            <p id="error" style="color:red;"></p>
+            </div>
+            
+
+         </form>
+      </div>
+   </body>
     
-  </script>
-</head>
-<body>
-  <h1>GitHub Login (with whitelist)</h1>
-  <button onclick="login()">Login with GitHub</button>
-  <p id="output"></p>
-</body>
 </html>
+
