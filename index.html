@@ -35,16 +35,13 @@
 
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        document.getElementById('error').innerText = "Login successful!";
+         alert("Login successful!\nWelcome " + userCredential.user.email);
          window.open("https://prolouies888.github.io/course/18301.html");  
       } catch (error) {
         document.getElementById('error').innerText = `Error: ${error.message}`;
        
       }
-       setTimeout(function () {
-    form.reset();
-    document.getElementById("error").innerText ="";
-  }, 2000);
+      
     };
            
 
