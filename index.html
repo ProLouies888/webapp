@@ -28,7 +28,7 @@
   const auth = getAuth(app);
 
      
-     function authenticateUser() {
+    async function authenticateUser() {
        
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -157,7 +157,7 @@ button {
             
             <div>
                 
-            <button class="button"  onclick="authenticateUser()">Login</button>
+            <button class="button" type="submit" onclick="authenticateUser()">Login</button>
             <p id="error" style="color:red;"></p>
             </div>
             
