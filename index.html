@@ -5,52 +5,39 @@
   <head>
     <base target="_top">
    
-   <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCVLDlhnQE4qogdVnF3TZdF-VC_mQdK6uE",
-    authDomain: "logindb-543c4.firebaseapp.com",
-    databaseURL: "https://logindb-543c4-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "logindb-543c4",
-    storageBucket: "logindb-543c4.firebasestorage.app",
-    messagingSenderId: "933105724056",
-    appId: "1:933105724056:web:f0953859f728fd448cbeed"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-     
-    async function authenticateUser() {
-       
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-         alert("Login successful!\nWelcome " + userCredential.user.email);
+    <script>
+      function authenticateUser() {
+        var inputemail = document.getElementById("email").value;
+        var inputpassword = document.getElementById("password").value;
+       if (verifyLogin(inputemail, inputpassword)) {
          window.open("https://prolouies888.github.io/course/18301.html");  
-      } catch (error) {
-        document.getElementById('error').innerText = `Error: ${error.message}`;
-       
+      } else {
+        document.getElementById("error").innerText = "Invalid Email or Password!";
       }
-      
+       setTimeout(function () {
+    form.reset();
+    document.getElementById("error").innerText ="";
+  }, 2000);
     };
            
 
-    
+  function verifyLogin(email, password) {
+  var validUsers = {
+    "ywleo88@gmail.com": "jimmy123",
+    "user2@gmail.com": "securepass"
+  };
+ 
+      return validUsers[email] === password;
+    }
+   
   </script>
-  </head>    
+</body>
+</html>
 
 
-
+  </head>
+ 
+  <body>
     <style>
      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 * {
